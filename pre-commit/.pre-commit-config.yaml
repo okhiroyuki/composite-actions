@@ -8,3 +8,10 @@ repos:
     rev: v1.7.1
     hooks:
       - id: actionlint
+  - repo: local
+    hooks:
+      - id: shellcheck
+        name: shellcheck
+        language: system
+        entry: shellcheck
+        files: ^(.*\.(sh|bash))$
