@@ -23,17 +23,14 @@ runs:
         fi
       shell: bash
     - name: Create a new tag
-      if: success()
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        git tag -a "${PACKAGE_VERSION}" -m "Release v${PACKAGE_VERSION}"
-        git push origin "${PACKAGE_VERSION}"
+      if: steps.check_tag.outcome == 'success'
+      uses: EndBug/latest-tag@v1
+      with:
+        ref: ${{ env.PACKAGE_VERSION }}
       env:
-        PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}
-      shell: bash
+        GITHUB_TOKEN: ${{ github.token }}
     - uses: JS-DevTools/npm-publish@v3
-      if: success()
+      if: steps.check_tag.outcome == 'success'
       id: publish
       with:
         token: ${{ inputs.npm-token }}
