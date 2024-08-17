@@ -11,7 +11,7 @@ runs:
   steps:
     - uses: actions/setup-node@v4
       with:
-        node-version: ${{ inputs.working-directory }}/.node-version
+        node-version-file: ${{ inputs.working-directory }}/.node-version
         cache: "npm"
         cache-dependency-path: ${{ inputs.working-directory }}/package-lock.json
     - name: Install dependencies
