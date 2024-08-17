@@ -1,0 +1,12 @@
+---
+name: pre-commit action
+description: "Run pre-commit hooks on your repository"
+runs:
+  using: composite
+  steps:
+    - name: pre-commit
+      uses: pre-commit/action@v3.0.1
+    - name: common pre-commit
+      uses: pre-commit/action@v3.0.1
+      with:
+        extra_args: --all-files --config ${{ github.workspace }}/.github/actions/composite-actions/pre-commit/.pre-commit-config.yaml
