@@ -2,7 +2,7 @@
 name: npm publish
 description: Publish an npm package
 inputs:
-  npm_token:
+  npm-token:
     description: "NPM token"
     required: true
 runs:
@@ -34,4 +34,4 @@ runs:
     - uses: JS-DevTools/npm-publish@v3
       id: publish
       with:
-        token: ${{ inputs.npm_token }}
+        token: ${{ inputs.npm-token }}
