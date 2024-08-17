@@ -10,10 +10,7 @@
   "yaml": {
   },
   "excludes": [
-    "**/*-lock.json",
-    ".npm",
-    "**/node_modules",
-    ".pre-commit-cache"
+    "**/*-lock.json"
   ],
   "plugins": [
     "https://plugins.dprint.dev/json-0.19.3.wasm",
