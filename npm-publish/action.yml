@@ -23,6 +23,7 @@ runs:
         fi
       shell: bash
     - name: Create a new tag
+      if: success()
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
@@ -32,6 +33,7 @@ runs:
         PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}
       shell: bash
     - uses: JS-DevTools/npm-publish@v3
+      if: success()
       id: publish
       with:
         token: ${{ inputs.npm-token }}
