@@ -1,0 +1,23 @@
+---
+name: add-tag-from-package
+description: Add a tag from the package.json version
+runs:
+  using: composite
+  steps:
+    - name: Read version from package.json
+      id: read_version
+      run: |
+        version=$(jq -r '.version' package.json)
+        echo "PACKAGE_VERSION=$version" >> $GITHUB_ENV
+      shell: bash
+    - uses: mukunku/tag-exists-action@v1.6.0
+      id: check-tag
+      with:
+        tag: ${{ env.PACKAGE_VERSION }}
+    - name: Create a new tag
+      if: steps.check-tag.outputs.exists == 'false'
+      uses: EndBug/latest-tag@v1
+      with:
+        ref: ${{ env.PACKAGE_VERSION }}
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
