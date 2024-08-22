@@ -4,11 +4,18 @@ description: "Run pre-commit hooks on your repository"
 runs:
   using: composite
   steps:
-    - uses: aquaproj/aqua-installer@v3.0.1
+    - name: Set up Homebrew
+      id: setup-homebrew
+      uses: Homebrew/actions/setup-homebrew@master
       with:
-        aqua_version: v2.28.0
-    - name: install ghalint
-      run: aqua g -i suzuki-shunsuke/ghalint
+        core: false
+        cask: false
+        test-bot: false
+    - name: Set up actionlint
+      env:
+        HOMEBREW_REPOSITORY: ${{ steps.setup-homebrew.outputs.repository-path }}
+      run: |
+        brew install suzuki-shunsuke/ghalint/ghalint
       shell: bash
     - name: pre-commit
       uses: pre-commit/action@v3.0.1
