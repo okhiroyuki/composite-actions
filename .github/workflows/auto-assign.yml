@@ -8,7 +8,8 @@ on:
       - ready_for_review
 
 jobs:
-  auto-assign:
+  assign:
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'dependabot') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
