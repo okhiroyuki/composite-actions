@@ -1,0 +1,20 @@
+---
+name: pre-commit
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/checkout@v4
+        with:
+          path: ./.github/actions/composite-actions
+      - uses: ./.github/actions/composite-actions/auto-assign
