@@ -13,19 +13,19 @@ runs:
         JSON: ${{ github.workspace }}/.github/actions/composite-actions/auto-assign/reviewers.json
       shell: bash
 
-    # - name: Remove PR owner from reviewers
-    #   id: filter-reviewers
-    #   run: |
-    #     REVIEWERS=$(echo ${{ steps.load-reviewers.outputs.reviewers }} |\
-    #      tr "," "\n" | grep -v ${{ github.event.pull_request.user.login }} | tr "\n" ",")
-    #     echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
-    #   shell: bash
+    - name: Remove PR owner from reviewers
+      id: filter-reviewers
+      run: |
+        REVIEWERS=$(echo ${{ steps.load-reviewers.outputs.reviewers }} | \
+          tr "," "\n" | grep -v ${{ github.event.pull_request.user.login }} | tr "\n" ",")
+        echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
+      shell: bash
+
     - name: Assign reviewers and assignee
       run: |
         gh pr edit ${{ github.event.pull_request.number }} \
-          --add-reviewer ${{ steps.load-reviewers.outputs.reviewers }} \
+          --add-reviewer ${{ steps.filter-reviewers.outputs.reviewers }} \
           --add-assignee ${{ github.event.pull_request.user.login }}
       env:
         GITHUB_TOKEN: ${{ github.token }}
       shell: bash
-      # --add-reviewer ${{ steps.filter-reviewers.outputs.reviewers }} \
