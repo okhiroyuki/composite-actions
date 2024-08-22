@@ -13,7 +13,7 @@ runs:
         REVIEWERS=$(jq -r --arg repo ${{ github.repository }} '.[$repo] | join(",")' $REVIEWERS)
         echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
       env:
-        REVIEWERS: ${{ github.workspace }}/.github/composite-actions/auto-assign/reviewers.json
+        REVIEWERS: ${{ github.workspace }}/.github/actions/composite-actions/auto-assign/reviewers.json
       shell: bash
 
     # - name: Remove PR owner from reviewers
