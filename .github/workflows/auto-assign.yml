@@ -1,5 +1,5 @@
 ---
-name: pre-commit
+name: auto-assign
 # yamllint disable-line rule:truthy
 on:
   pull_request:
