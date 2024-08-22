@@ -4,6 +4,12 @@ description: "Run pre-commit hooks on your repository"
 runs:
   using: composite
   steps:
+    - uses: aquaproj/aqua-installer@v3.0.1
+      with:
+        aqua_version: v2.28.0
+    - name: install ghalint
+      run: aqua g -i suzuki-shunsuke/ghalint
+      shell: bash
     - name: pre-commit
       uses: pre-commit/action@v3.0.1
     - name: common pre-commit

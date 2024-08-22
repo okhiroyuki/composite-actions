@@ -15,3 +15,8 @@ repos:
         language: system
         entry: shellcheck
         files: ^(.*\.(sh|bash))$
+      - id: ghalint
+        name: ghalint
+        language: system
+        entry: ./ghalint run
+        files: ^(.*\.(yaml|yml))$
