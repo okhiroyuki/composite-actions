@@ -18,5 +18,5 @@ repos:
       - id: ghalint
         name: ghalint
         language: system
-        entry: ./ghalint run
+        entry: ghalint run
         files: ^(.*\.(yaml|yml))$
