@@ -10,10 +10,10 @@ runs:
     - name: Load reviewers for this repository
       id: load-reviewers
       run: |
-        REVIEWERS=$(jq -r --arg repo ${{ github.repository }} '.[$repo] | join(",")' $REVIEWERS)
+        REVIEWERS=$(jq -r --arg repo ${{ github.repository }} '.[$repo] | join(",")' "$JSON")
         echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
       env:
-        REVIEWERS: ${{ github.workspace }}/.github/actions/composite-actions/auto-assign/reviewers.json
+        JSON: ${{ github.workspace }}/.github/actions/composite-actions/auto-assign/reviewers.json
       shell: bash
 
     # - name: Remove PR owner from reviewers
