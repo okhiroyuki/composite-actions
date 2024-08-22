@@ -3,13 +3,17 @@ name: pre-commit
 # yamllint disable-line rule:truthy
 on:
   pull_request:
-    types:
-      - opened
-      - ready_for_review
+# types:
+#   - opened
+#   - ready_for_review
 
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
