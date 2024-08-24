@@ -29,7 +29,8 @@
         "exiasr.hadolint",
         "GitHub.copilot-chat",
         "GitHub.copilot",
-        "timonwong.shellcheck"
+        "timonwong.shellcheck",
+        "EditorConfig.EditorConfig"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh"
