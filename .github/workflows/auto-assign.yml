@@ -9,7 +9,7 @@ on:
 
 jobs:
   assign:
-    if: ${{ !startsWith(github.event.pull_request.head.ref, 'dependabot') }}
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'renovate') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
