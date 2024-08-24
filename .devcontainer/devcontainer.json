@@ -16,8 +16,7 @@
   ],
   "remoteEnv": {
     "PRE_COMMIT_HOME": "${containerWorkspaceFolder}/.pre-commit-cache",
-    "npm_config_cache": "${containerWorkspaceFolder}/.npm",
-    "SKIP": "hadolint-docker"
+    "npm_config_cache": "${containerWorkspaceFolder}/.npm"
   },
   "postAttachCommand": "bash .devcontainer/commands/post-attach.sh",
   "customizations": {
@@ -30,7 +29,8 @@
         "exiasr.hadolint",
         "GitHub.copilot-chat",
         "GitHub.copilot",
-        "timonwong.shellcheck"
+        "timonwong.shellcheck",
+        "EditorConfig.EditorConfig"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh"
