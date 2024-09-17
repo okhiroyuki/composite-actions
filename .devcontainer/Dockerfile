@@ -1,7 +1,7 @@
 FROM hadolint/hadolint:v2.12.0-alpine@sha256:3c206a451cec6d486367e758645269fd7d696c5ccb6ff59d8b03b0e45268a199 AS dockerfile-lint
 FROM koalaman/shellcheck:v0.10.0@sha256:2097951f02e735b613f4a34de20c40f937a6c8f18ecb170612c88c34517221fb AS shellcheck
 
-FROM mcr.microsoft.com/devcontainers/javascript-node:1-22@sha256:f1e8fdca29c437891d8d793bf59d368e4c1850884c22161f7401086da63332d4
+FROM mcr.microsoft.com/devcontainers/javascript-node:1-22@sha256:b3030464fe18c02840992f9b0b46422e0ea3589a424c9617efda22b71308f023
 
 COPY --from=dockerfile-lint /bin/hadolint /usr/bin/hadolint
 
