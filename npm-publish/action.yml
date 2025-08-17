@@ -18,15 +18,15 @@ runs:
       id: check-tag
       with:
         tag: ${{ env.PACKAGE_VERSION }}
-    - name: Create a new tag
-      if: steps.check-tag.outputs.exists == 'false'
-      uses: EndBug/latest-tag@7589411ebda7bc8f98deb2dbc37e3dc45828f7d0 # v1
-      with:
-        ref: ${{ env.PACKAGE_VERSION }}
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
     - uses: JS-DevTools/npm-publish@19c28f1ef146469e409470805ea4279d47c3d35c # v3
       if: steps.check-tag.outputs.exists == 'false'
       id: publish
       with:
         token: ${{ inputs.npm-token }}
+    - name: Create a new tag
+      if: steps.publish.outcome == 'success'
+      uses: EndBug/latest-tag@7589411ebda7bc8f98deb2dbc37e3dc45828f7d0 # v1
+      with:
+        ref: ${{ env.PACKAGE_VERSION }}
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
