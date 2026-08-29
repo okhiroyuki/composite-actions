@@ -16,7 +16,7 @@ runs:
         tag: ${{ env.PACKAGE_VERSION }}
     - name: Create a new tag
       if: steps.check-tag.outputs.exists == 'false'
-      uses: EndBug/latest-tag@8fcae8848c1e23fd8212258f69a9619bc62cad67 # v1
+      uses: EndBug/latest-tag@8fcae8848c1e23fd8212258f69a9619bc62cad67 # v1.6.3
       with:
         ref: ${{ env.PACKAGE_VERSION }}
       env:
