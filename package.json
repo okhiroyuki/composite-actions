@@ -9,6 +9,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "dprint": "0.64.3"
+    "dprint": "0.65.0"
   }
 }
